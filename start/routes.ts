@@ -37,4 +37,14 @@ Route.get('test_db_connections', async ({ response }: HttpContextContract) => {
 
 Route.group(() => {
   Route.resource('users/', 'UsersController')
+  Route.post('login', 'AuthController.login')
 }).prefix('v1/api')
+
+// Authenticate Routes Group
+Route.group(() => {
+  Route.get('test', ({ response }) => {
+    return response.ok({ message: 'Você está autenticado' })
+  })
+})
+  .prefix('v1/api')
+  .middleware(['auth', 'is:admin'])
