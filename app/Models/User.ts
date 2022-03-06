@@ -11,6 +11,10 @@ import {
 } from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
 
+import { compose } from '@ioc:Adonis/Core/Helpers'
+import { Filterable } from '@ioc:Adonis/Addons/LucidFilter'
+import UserFilter from '../Models/Filters/UserFilter'
+
 import { v4 as uuidv4 } from 'uuid'
 
 import Address from './Address'
@@ -28,7 +32,9 @@ import Role from './Role'
     beforeFind
  */
 
-export default class User extends BaseModel {
+export default class User extends compose(BaseModel, Filterable) {
+  public static $filter = () => UserFilter
+
   @column({ isPrimary: true })
   public id: number
 
