@@ -40,16 +40,26 @@ Route.group(() => {
   Route.post('users/', 'UsersController.store')
 }).prefix('v1/api')
 
-// Authenticate Routes Group
+// Client Routes Group
 Route.group(() => {
   Route.resource('users/', 'UsersController').except(['store', 'index', 'destroy'])
+  Route.resource('products/', 'ProductsController').except(['store', 'destroy'])
 })
   .prefix('v1/api')
   .middleware(['auth', 'is:client'])
 
-// Routes admin group
+// Employee Routes Group
+Route.group(() => {
+  Route.resource('products/', 'ProductsController').only(['store', 'destroy'])
+  Route.resource('categories/', 'CategoriesController').apiOnly()
+})
+  .prefix('v1/api')
+  .middleware(['auth', 'is:employee'])
+
+// Admin Routes group
 Route.group(() => {
   Route.resource('users/', 'UsersController').only(['index', 'destroy'])
+  Route.post('users/access_allow', 'UsersController.AccessAllow')
 })
   .prefix('v1/api')
   .middleware(['auth', 'is:admin'])
