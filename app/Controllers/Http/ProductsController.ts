@@ -33,7 +33,7 @@ export default class ProductsController {
   public async store({ response, request }: HttpContextContract) {
     await request.validate(StoreValidator)
 
-    const body = request.only(['name', 'code'])
+    const body = request.only(['name', 'code', 'price'])
     const { categories } = request.all()
 
     let productCreated
@@ -95,7 +95,7 @@ export default class ProductsController {
     await request.validate(UpdateValidator)
 
     const productSecureId = params.id
-    const bodyProduct = request.only(['name', 'code'])
+    const bodyProduct = request.only(['name', 'code', 'price'])
     const { categories } = request.all()
 
     let productUpdated
