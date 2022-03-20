@@ -33,7 +33,8 @@
       "adonis-lucid-filter",
       "adonis5-scheduler",
       "@adonisjs/mail",
-      "@adonisjs/view"
+      "@adonisjs/view",
+      "@adonisjs/drive-s3"
     ]
   }
 }

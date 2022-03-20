@@ -23,8 +23,11 @@
     "youch-terminal": "^2.1.1"
   },
   "dependencies": {
+    "@adonisjs/application": "^5.2.0",
     "@adonisjs/auth": "^8.0.10",
     "@adonisjs/core": "^5.4.0",
+    "@adonisjs/drive": "^2.0.9",
+    "@adonisjs/drive-s3": "^1.1.0",
     "@adonisjs/lucid": "^16.3.2",
     "@adonisjs/mail": "^7.2.5",
     "@adonisjs/repl": "^3.1.0",

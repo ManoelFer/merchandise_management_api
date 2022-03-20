@@ -41,6 +41,9 @@ export default class StoreValidator extends MessagesCustom {
         },
       }),
     ]),
+
+    urlProfilePic: schema.file.optional({ size: '2mb', extnames: ['jpg', 'png', 'jpeg'] }, []),
+
     password: schema.string.optional({}, [rules.maxLength(50)]),
 
     addressId: schema.number.optional([rules.exists({ table: 'addresses', column: 'id' })]),
