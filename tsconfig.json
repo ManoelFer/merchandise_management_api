@@ -34,7 +34,8 @@
       "adonis5-scheduler",
       "@adonisjs/mail",
       "@adonisjs/view",
-      "@adonisjs/drive-s3"
+      "@adonisjs/drive-s3",
+      "@adonisjs/redis"
     ]
   }
 }
