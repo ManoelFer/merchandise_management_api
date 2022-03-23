@@ -3,9 +3,9 @@ import Redis from '@ioc:Adonis/Addons/Redis'
 
 export default class TestRedisController {
   public async store({ response }: HttpContextContract) {
-    const resultRedis = await Redis.set('nome', 'Manoel Fernandes Neto')
+    const result = await Redis.set('nome', 'Manoel Fernandes Neto')
 
-    return response.ok({ resultRedis })
+    return response.ok({ result })
   }
 
   public async show({ response }: HttpContextContract) {
