@@ -15,7 +15,7 @@ export async function sendImgToS3AWS(file: any, user: IUser): Promise<string> {
 
   await file.move(Application.tmpPath('uploads'))
 
-  const stream = await Drive.getStream(Application.tmpPath(`uploads/${file.clientName}`))
+  const stream = await Drive.getStream(`${file.clientName}`)
 
   try {
     await s3.putStream(KEY, stream, { ContentType, ACL })
@@ -24,7 +24,7 @@ export async function sendImgToS3AWS(file: any, user: IUser): Promise<string> {
   }
 
   try {
-    await Drive.delete(Application.tmpPath(`uploads/${file.clientName}`))
+    await Drive.delete(`${file.clientName}`)
   } catch (error) {
     throw new Error(`Error in remove tmp directory! ${error.message}`)
   }
